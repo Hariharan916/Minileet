@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>CodePractice — Two Sum</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- ============ TOP NAVIGATION ============ -->
+<header class="topnav">
+  <div class="topnav-left">
+    <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="brand">
+      <span class="brand-mark">&lt;/&gt;</span>
+      <span class="brand-name">Code<span class="brand-accent">Practice</span></span>
+    </div>
+    <nav class="topnav-links" id="topnavLinks">
+      <a href="#" class="nav-link active">Problems</a>
+      <a href="#" class="nav-link">Contests</a>
+      <a href="#" class="nav-link">Discuss</a>
+      <a href="#" class="nav-link">Profile</a>
+    </nav>
+  </div>
+  <div class="topnav-right">
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" title="Toggle dark / light theme">
+      <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+    </button>
+    <div class="avatar" title="Guest">G</div>
+  </div>
+</header>
+
+<!-- ============ MAIN LAYOUT ============ -->
+<main class="workspace" id="workspace">
+
+  <!-- ===== LEFT: PROBLEM PANEL ===== -->
+  <section class="panel problem-panel" id="problemPanel" style="flex-basis:42%">
+    <div class="panel-tabs">
+      <button class="ptab active" data-ptab="description">Description</button>
+      <button class="ptab" data-ptab="editorial" disabled title="Not available in static demo">Editorial</button>
+      <button class="ptab" data-ptab="submissions" disabled title="Not available in static demo">Submissions</button>
+    </div>
+
+    <div class="panel-body" id="problemBody">
+      <div class="problem-head">
+        <h1 class="problem-title"><span class="problem-index">1.</span> Two Sum</h1>
+        <div class="problem-meta">
+          <span class="badge difficulty-easy">Easy</span>
+          <button class="icon-btn like-btn" title="Like">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/></svg>
+            <span>3.1k</span>
+          </button>
+          <button class="icon-btn" title="Bookmark">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="problem-text">
+        <p>Given an array of integers <code>nums</code> and an integer <code>target</code>, return the <em>indices of the two numbers</em> such that they add up to <code>target</code>.</p>
+        <p>You may assume that each input would have <strong>exactly one solution</strong>, and you may not use the <em>same</em> element twice.</p>
+        <p>You can return the answer in any order.</p>
+      </div>
+
+      <div class="example-block">
+        <p class="example-label">Example 1:</p>
+        <pre class="example-pre"><span class="ex-key">Input:</span> nums = [2,7,11,15], target = 9
+<span class="ex-key">Output:</span> [0,1]
+<span class="ex-key">Explanation:</span> Because nums[0] + nums[1] == 9, we return [0, 1].</pre>
+      </div>
+
+      <div class="example-block">
+        <p class="example-label">Example 2:</p>
+        <pre class="example-pre"><span class="ex-key">Input:</span> nums = [3,2,4], target = 6
+<span class="ex-key">Output:</span> [1,2]
+<span class="ex-key">Explanation:</span> Because nums[1] + nums[2] == 6, we return [1, 2].</pre>
+      </div>
+
+      <div class="example-block">
+        <p class="example-label">Example 3:</p>
+        <pre class="example-pre"><span class="ex-key">Input:</span> nums = [3,3], target = 6
+<span class="ex-key">Output:</span> [0,1]
+<span class="ex-key">Explanation:</span> Because nums[0] + nums[1] == 6, we return [0, 1].</pre>
+      </div>
+
+      <div class="constraints-block">
+        <p class="section-label">Constraints:</p>
+        <ul>
+          <li><code>2 &le; nums.length &le; 10</code><sup>4</sup></li>
+          <li><code>-10</code><sup>9</sup><code> &le; nums[i] &le; 10</code><sup>9</sup></li>
+          <li><code>-10</code><sup>9</sup><code> &le; target &le; 10</code><sup>9</sup></li>
+          <li>Only one valid answer exists.</li>
+        </ul>
+      </div>
+
+      <div class="followup-block">
+        <p class="section-label">Follow-up:</p>
+        <p>Can you come up with an algorithm that is less than <code>O(n<sup>2</sup>)</code> time complexity?</p>
+      </div>
+
+      <div class="tags-block">
+        <span class="tag">Array</span>
+        <span class="tag">Hash Table</span>
+        <span class="tag">Two Pointers</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== VERTICAL RESIZER ===== -->
+  <div class="resizer vertical-resizer" id="vResizer" role="separator" aria-orientation="vertical" tabindex="0"></div>
+
+  <!-- ===== RIGHT: EDITOR + TESTS ===== -->
+  <section class="panel right-panel" id="rightPanel" style="flex-basis:58%">
+
+    <!-- ---- EDITOR ---- -->
+    <div class="editor-panel" id="editorPanel" style="flex-basis:60%">
+      <div class="editor-toolbar">
+        <div class="editor-toolbar-left">
+          <select class="lang-select" id="langSelect">
+            <option value="python" selected>Python3</option>
+          </select>
+          <button class="icon-btn small" id="formatBtn" title="Format code (auto-indent)">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="21" y1="10" x2="7" y2="10"/><line x1="21" y1="6" x2="3" y2="6"/><line x1="21" y1="14" x2="3" y2="14"/><line x1="21" y1="18" x2="7" y2="18"/></svg>
+            Format
+          </button>
+          <button class="icon-btn small" id="resetBtn" title="Reset to starter code">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
+            Reset
+          </button>
+        </div>
+        <div class="editor-toolbar-right">
+          <span class="font-size-label">Font</span>
+          <button class="icon-btn small square" id="fontMinus" title="Decrease font size">&minus;</button>
+          <span id="fontSizeVal">14</span>
+          <button class="icon-btn small square" id="fontPlus" title="Increase font size">+</button>
+        </div>
+      </div>
+      <div class="editor-host" id="editorHost">
+        <div class="editor-fallback" id="editorFallback" hidden>
+          <textarea id="fallbackTextarea" spellcheck="false"></textarea>
+        </div>
+      </div>
+    </div>
+
+    <!-- ---- HORIZONTAL RESIZER ---- -->
+    <div class="resizer horizontal-resizer" id="hResizer" role="separator" aria-orientation="horizontal" tabindex="0"></div>
+
+    <!-- ---- TEST / RESULT AREA ---- -->
+    <div class="bottom-panel" id="bottomPanel" style="flex-basis:40%">
+      <div class="bottom-tabs">
+        <button class="btab active" data-btab="testcase">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+          Testcase
+        </button>
+        <button class="btab" data-btab="result">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
+          Result
+        </button>
+      </div>
+
+      <div class="bottom-body">
+        <!-- TESTCASE TAB -->
+        <div class="btab-panel active" id="testcaseTab">
+          <div class="case-selector" id="caseSelector">
+            <button class="case-chip active" data-case="0">Case 1</button>
+            <button class="case-chip" data-case="1">Case 2</button>
+            <button class="case-chip" data-case="2">Case 3</button>
+            <button class="case-chip add-case" id="addCaseBtn" title="Add a custom test case">+</button>
+          </div>
+          <div class="case-fields" id="caseFields">
+            <label class="field-label">nums =</label>
+            <input type="text" class="case-input" id="caseNumsInput" value="[2,7,11,15]" />
+            <label class="field-label">target =</label>
+            <input type="text" class="case-input" id="caseTargetInput" value="9" />
+          </div>
+          <button class="ghost-btn" id="customCaseBtn">+ Custom Test Case</button>
+        </div>
+
+        <!-- RESULT TAB -->
+        <div class="btab-panel" id="resultTab">
+          <div class="result-empty" id="resultEmpty">
+            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            <p>Run your code to see results here</p>
+          </div>
+          <div class="result-content" id="resultContent" hidden></div>
+        </div>
+      </div>
+
+      <div class="action-bar">
+        <div class="action-bar-status" id="actionStatus"></div>
+        <div class="action-bar-buttons">
+          <button class="btn btn-run" id="runBtn">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            Run
+          </button>
+          <button class="btn btn-submit" id="submitBtn">Submit</button>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.45.0/min/vs/loader.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
